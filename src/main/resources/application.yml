@@ -1,0 +1,19 @@
+server:
+  port: 8070
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: ${KAFKA_BROKER}:${KAFKA_BROKER_PORT}
+      group-id: ${CONSUMER_GROUP_ID}
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+    producer:
+      bootstrap-servers: ${KAFKA_BROKER}:${KAFKA_BROKER_PORT}
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+kafka:
+  topic-name: ${TOPIC_NAME}
+  message-per-request: ${MESSAGE_PER_REQUEST}
